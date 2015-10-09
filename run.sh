@@ -21,6 +21,9 @@ fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt hora.fst | dot -Tpdf > 
 fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  horas.txt  > horas.fst
 fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt horas.fst | dot -Tpdf > horas.pdf
 
+fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  digitos1a9.txt  > digitos1a9.fst
+fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt digitos1a9.fst | dot -Tpdf > digitos1a9.pdf
+
 ################### Tradutores de tradução ################
 #
 # Compila e gera a versão gráfica do transdutor que traduz letra a letra
