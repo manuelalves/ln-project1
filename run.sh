@@ -46,7 +46,8 @@ fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  umquarto.txt  > umqu
 fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt umquarto.fst | dot -Tpdf > umquarto.pdf
 
 # Compila e gera a versão gráfica do transdutor dos minutos de 20 a 59
-fstconcat digitos20a50.fst digitos1a9.fst > minutos20a59.fst
+fstconcat digitos20a50.fst digitos1a9.fst > 20a59.fst
+fstconcat 20a59.fst minutos.fst > minutos20a59.fst
 fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt  minutos20a59.fst | dot -Tpdf > minutos20a59.pdf
 
 
