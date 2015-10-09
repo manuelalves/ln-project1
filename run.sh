@@ -12,8 +12,8 @@ fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt  umaeduashoras.fst | do
 fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  minutos.txt  > minutos.fst
 fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt  minutos.fst | dot -Tpdf > minutos.pdf
 
-fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  minuto.txt  > minuto.fst
-fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt  minuto.fst | dot -Tpdf > minuto.pdf
+fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  umminuto.txt  > umminuto.fst
+fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt  umminuto.fst | dot -Tpdf > umminuto.pdf
 
 fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  hora.txt  > hora.fst
 fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt hora.fst | dot -Tpdf > hora.pdf
