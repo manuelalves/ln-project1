@@ -45,10 +45,26 @@ fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt paraas.fst | dot -Tpdf 
 fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  umquarto.txt  > umquarto.fst
 fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt umquarto.fst | dot -Tpdf > umquarto.pdf
 
+fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  zero.txt  > zero.fst
+fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt zero.fst | dot -Tpdf > zero.pdf
+
+fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  digitos0a9.txt  > digitos0a9.fst
+fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt digitos0a9.fst | dot -Tpdf > digitos0a9.pdf
+
+# Compila e gera a versão gráfica do transdutor dos minutos de 0 a 19
+fstconcat zero.fst digitos1a9.fst > 0a9.fst
+fstunion 0a9.fst digitos10a19.fst > minutos0a19.fst
+fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt minutos0a19.fst | dot -Tpdf > minutos0a19.pdf
+
 # Compila e gera a versão gráfica do transdutor dos minutos de 20 a 59
-fstconcat digitos20a50.fst digitos1a9.fst > 20a59.fst
-fstconcat 20a59.fst minutos.fst > minutos20a59.fst
-fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt  minutos20a59.fst | dot -Tpdf > minutos20a59.pdf
+fstconcat digitos20a50.fst digitos0a9.fst > 20a59.fst
+fstunion 20a59.fst digitos10a19.fst > minutos10a59.fst
+fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt  minutos10a59.fst | dot -Tpdf > minutos10a59.pdf
+
+# Compila e gera a versão gráfica do transdutor dos minutos
+fstunion minutos0a19.fst minutos10a59.fst > 0a59.fst
+fstconcat 0a59.fst minutos.fst > minutos0a59.fst
+fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt  minutos0a59.fst | dot -Tpdf > minutos0a59.pdf
 
 
 ################### Tradutores de tradução ################
