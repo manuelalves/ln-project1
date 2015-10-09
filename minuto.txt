@@ -1,2 +1,2 @@
-0 1 eps minutos
+0 1 eps minuto
 1
