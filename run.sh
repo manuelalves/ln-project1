@@ -44,6 +44,12 @@ fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt paraas.fst | dot -Tpdf 
 
 fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  umquarto.txt  > umquarto.fst
 fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt umquarto.fst | dot -Tpdf > umquarto.pdf
+
+# Compila e gera a versão gráfica do transdutor dos minutos de 20 a 59
+fstconcat digitos20a50.fst digitos1a9.fst > minutos20a59.fst
+fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt  minutos20a59.fst | dot -Tpdf > minutos20a59.pdf
+
+
 ################### Tradutores de tradução ################
 #
 # Compila e gera a versão gráfica do transdutor que traduz letra a letra
