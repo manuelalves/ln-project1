@@ -51,6 +51,15 @@ fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt zero.fst | dot -Tpdf > 
 fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  digitos0a9.txt  > digitos0a9.fst
 fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt digitos0a9.fst | dot -Tpdf > digitos0a9.pdf
 
+fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  digitos3a9.txt  > digitos3a9.fst
+fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt digitos3a9.fst | dot -Tpdf > digitos3a9.pdf
+
+fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  uma.txt  > uma.fst
+fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt uma.fst | dot -Tpdf > uma.pdf
+
+fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  duas.txt  > duas.fst
+fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt duas.fst | dot -Tpdf > duas.pdf
+
 # Compila e gera a versão gráfica do transdutor dos minutos de 0 a 19
 fstconcat zero.fst digitos1a9.fst > 0a9.fst
 fstunion 0a9.fst digitos10a19.fst > minutos0a19.fst
@@ -66,6 +75,21 @@ fstunion minutos0a19.fst minutos10a59.fst > 0a59.fst
 fstconcat 0a59.fst minutos.fst > minutos0a59.fst
 fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt  minutos0a59.fst | dot -Tpdf > minutos0a59.pdf
 
+# Compila e gera a versão gráfica do transdutor das horas 1 a 2
+fstconcat uma.fst hora.fst > hora1.fst
+fstconcat duas.fst horas.fst > hora2.fst
+fstunion hora1.fst hora2.fst > hora1e2.fst 
+fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt  hora1e2.fst | dot -Tpdf > hora1e2.pdf
+
+# Compila e gera a versão gráfica do transdutor das horas 3 a 9
+fstconcat digitos3a9.fst horas.fst > horas3a9.fst
+fstunion hora1e2.fst horas3a9.fst > horas1a9.fst
+fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt  horas1a9.fst | dot -Tpdf > horas1a9.pdf
+
+# Compila e gera a versão gráfica do transdutor das horas 1 a 19
+fstconcat digitos10a19.fst horas.fst > horas10a19.fst
+fstunion horas1a9.fst horas10a19.fst > horas1a19.fst
+fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt  horas1a19.fst | dot -Tpdf > horas1a19.pdf
 
 ################### Tradutores de tradução ################
 #
