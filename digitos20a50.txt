@@ -1,0 +1,8 @@
+0 1 2 vinte
+0 2 3 trinta
+0 3 4 quarenta
+0 4 5 cinquenta
+1
+2
+3
+4
