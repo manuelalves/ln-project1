@@ -47,46 +47,44 @@ fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt duas.fst | dot -Tpdf > 
 fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  zerohoras.txt  > zerohoras.fst
 fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt zerohoras.fst | dot -Tpdf > zerohoras.pdf
 
-
 fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  vinte.txt  > vinte.fst
 fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt vinte.fst | dot -Tpdf > vinte.pdf
 
 fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  vinteeum.txt  > vinteeum.fst
 fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt vinteeum.fst | dot -Tpdf > vinteeum.pdf
 
+fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  e.txt  > e.fst
+fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt e.fst | dot -Tpdf > e.pdf
 
 #################### Compila e gera a versão gráfica do transdutor das horas ####################
 
-####### 0 #######
-fstconcat zero.fst zerohoras.fst > hora0aux.fst
-fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt hora0aux.fst | dot -Tpdf > hora0aux.pdf
-
 ####### 1 #######
-fstconcat zero.fst uma.fst > hora1aux.fst
-fstunion hora0aux.fst hora1aux.fst > hora0e1.fst
+fstunion zerohoras.fst uma.fst > hora0e1.fst
 fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt hora0e1.fst | dot -Tpdf > hora0e1.pdf
 
 ####### 2 #######
-fstconcat zero.fst duas.fst > hora2aux.fst
-fstunion hora0e1.fst hora2aux.fst > hora0a2.fst
+fstunion hora0e1.fst duas.fst > hora0a2.fst
+fstrmepsilon hora0a2.fst hora0a2.fst
 fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt hora0a2.fst | dot -Tpdf > hora0a2.pdf
 
 ####### 3 - 9 #######
-fstconcat zero.fst digitos3a9horas.fst > hora3a9aux.fst
-fstunion hora0a2.fst hora3a9aux.fst > hora0a9.fst
-fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt hora0a9.fst | dot -Tpdf > hora0a9.pdf
+fstunion hora0a2.fst digitos3a9horas.fst > hora0a9.fst
+fstconcat zero.fst hora0a9.fst > 0a9horas.fst
+fstrmepsilon 0a9horas.fst 0a9horas.fst
+fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt 0a9horas.fst | dot -Tpdf > 0a9horas.pdf
 
 ####### 10 - 19 #######
-fstunion hora0a9.fst digitos10a19.fst > hora0a19.fst
+fstunion 0a9horas.fst digitos10a19.fst > hora0a19.fst
+fstrmepsilon hora0a19.fst hora0a19.fst
 fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt hora0a19.fst | dot -Tpdf > hora0a19.pdf
 
 ####### 20 #######
-fstunion hora0a19.fst vinte.fst > hora0a20.fst
-fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt hora0a20.fst | dot -Tpdf > hora0a20.pdf
-
-####### 21 #######
-fstunion hora0a20.fst vinteeum.fst > hora0a23.fst
-fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt hora0a23.fst | dot -Tpdf > hora0a23.pdf
+fstunion zero.fst vinteeum.fst > zeroe21.fst
+fstrmepsilon zeroe21.fst zeroe21.fst
+fstconcat vinte.fst zeroe21.fst > vinte20.fst
+fstunion hora0a19.fst vinte20.fst > horas.fst
+fstrmepsilon horas.fst horas.fst
+fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt horas.fst | dot -Tpdf > horas.pdf
 
 #################### Compila e gera a versão gráfica do transdutor dos minutos ####################
 
@@ -99,7 +97,15 @@ fstunion zero.fst digitos1a9.fst > digitos1a9ou0.fst              # zero no segu
 fstconcat digitos20a50.fst digitos1a9ou0.fst > minutos20a50.fst   # os restantes 9 digitos do segundo digito para numeros de 20-59
 
 ####### 0 - 59 #######
-fstunion digitos10a19.fst minutos20a50.fst > minutosaux.fst       # junta os numeros de 10-19 com os de 20-50
-fstunion minutosaux.fst minutos0a9.fst > minutosfinal.fst    # Junta os valores de 0-9 aos restantes
-fstrmepsilon minutosfinal.fst minutosfinal.fst
-fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt minutosfinal.fst | dot -Tpdf > minutosfinal.pdf
+fstconcat e.fst digitos10a19.fst > edigitos10a19.fst
+fstunion edigitos10a19.fst minutos20a50.fst > minutosaux.fst       # junta os numeros de 10-19 com os de 20-50
+fstunion minutosaux.fst minutos0a9.fst > minutos.fst    # Junta os valores de 0-9 aos restantes
+fstrmepsilon minutos.fst minutos.fst
+fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt minutos.fst | dot -Tpdf > minutos.pdf
+
+#################### Compila e gera a versão gráfica do transdutor relogio ####################
+
+fstconcat horas.fst doispontos.fst > horasdoispontos.fst
+fstconcat horasdoispontos.fst minutos.fst > relogio.fst
+fstrmepsilon relogio.fst relogio.fst
+fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt relogio.fst | dot -Tpdf > relogio.pdf

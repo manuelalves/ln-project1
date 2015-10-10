@@ -1,4 +1,2 @@
-0 1 2 eps
-1 2 0 vinte
-2
-
+0 1 2 vinte
+1
