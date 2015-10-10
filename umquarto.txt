@@ -1,3 +1,6 @@
-0 1 eps um
-1 2 eps quarto
+0 1 1 eps
+1 2 5 e
+2 3 eps um
+3 4 eps quarto
 2
+4
