@@ -48,9 +48,6 @@ fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt umquarto.fst | dot -Tpd
 fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  zero.txt  > zero.fst
 fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt zero.fst | dot -Tpdf > zero.pdf
 
-fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  digitos0a9.txt  > digitos0a9.fst
-fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt digitos0a9.fst | dot -Tpdf > digitos0a9.pdf
-
 fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  digitos3a9.txt  > digitos3a9.fst
 fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt digitos3a9.fst | dot -Tpdf > digitos3a9.pdf
 
@@ -63,25 +60,10 @@ fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt duas.fst | dot -Tpdf > 
 fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  zerohoras.txt  > zerohoras.fst
 fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt zerohoras.fst | dot -Tpdf > zerohoras.pdf
 
-# Compila e gera a versão gráfica do transdutor dos minutos de 0 a 19
-fstconcat zero.fst digitos1a9.fst > 0a9.fst
-fstunion 0a9.fst digitos10a19.fst > minutos0a19.fst
-fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt minutos0a19.fst | dot -Tpdf > minutos0a19.pdf
-
-# Compila e gera a versão gráfica do transdutor dos minutos de 20 a 59
-fstconcat digitos20a50.fst digitos0a9.fst > 20a59.fst
-fstunion 20a59.fst digitos10a19.fst > minutos10a59.fst
-fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt  minutos10a59.fst | dot -Tpdf > minutos10a59.pdf
-
-# Compila e gera a versão gráfica do transdutor dos minutos
-fstunion minutos0a19.fst minutos10a59.fst > 0a59.fst
-fstconcat 0a59.fst minutos.fst > minutos0a59.fst
-fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt  minutos0a59.fst | dot -Tpdf > minutos0a59.pdf
-
 # Compila e gera a versão gráfica do transdutor das horas 1 a 2
 fstconcat uma.fst hora.fst > hora1.fst
 fstconcat duas.fst horas.fst > hora2.fst
-fstunion hora1.fst hora2.fst > hora1e2.fst 
+fstunion hora1.fst hora2.fst > hora1e2.fst
 fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt  hora1e2.fst | dot -Tpdf > hora1e2.pdf
 
 # Compila e gera a versão gráfica do transdutor das horas 3 a 9
@@ -99,15 +81,19 @@ fstconcat zerohoras.fst horas.fst > horas0.fst
 fstunion horas0.fst horas1a19.fst > horas0a19.fst
 fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt  horas0a19.fst | dot -Tpdf > horas0a19.pdf
 
-################### Tradutores de tradução ################
-#
-# Compila e gera a versão gráfica do transdutor que traduz letra a letra
-#fstcompile  --isymbols=letras.sym --osymbols=letras.sym  trad.txt > trad.fst
-#fstdraw --isymbols=letras.sym --osymbols=letras.sym  trad.fst | dot -Tpdf > trad.pdf
+#################### Compila e gera a versão gráfica do transdutor dos minutos ####################
 
+####### 0 - 9 #######
+fstconcat digitos1a9.fst minutos.fst > digitos1a9aux.fst          # etiqueta minutos apos os dois digitos
+fstunion zero.fst digitos1a9aux.fst  > minutos0a9aux.fst          # introduz o 0 para ser estado final no caso de 00
+fstconcat zero.fst minutos0a9aux.fst  > minutos0a9.fst            # zero no primeiro digito 0_
 
-################### Testa os tradutores ################
-#
-# Compila e gera a versão gráfica do transdutor que traduz Inglês em Português
-#fstcompose potato.fst trad.fst > batata.fst
-#fstdraw --isymbols=letras.sym --osymbols=letras.sym  batata.fst | dot -Tpdf > batata.pdf
+####### 20 - 59 #######
+fstunion zero.fst digitos1a9.fst > digitos1a9ou0.fst              # zero no segundo digito no caso de 20, 30, 40 e 50
+fstconcat digitos20a50.fst digitos1a9ou0.fst > minutos20a50.fst   # os restantes 9 digitos do segundo digito para numeros de 20-59
+
+####### 0 - 59 #######
+fstunion digitos10a19.fst minutos20a50.fst > minutosaux.fst       # junta os numeros de 10-19 com os de 20-50
+fstconcat minutosaux.fst minutos.fst > minutosfinalaux.fst        # coloca etiqueta minutos no final
+fstunion minutosfinalaux.fst minutos0a9.fst > minutosfinal.fst    # Junta os valores de 0-9 aos restantes
+fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt minutosfinal.fst | dot -Tpdf > minutosfinal.pdf
