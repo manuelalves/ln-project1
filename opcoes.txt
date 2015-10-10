@@ -11,3 +11,10 @@ tentámos incluir as palavras minutos e horas na mesma. No entanto, devido à di
 cada número tivesse a palavra "hora" ou "minuto" caso fosse singular, e "horas" ou "minutos" caso fosse plural, decidimo 
 não implementar a solução desta maneira, até porque não contava para a avaliação.
 
+No que toca à maneira como lidámos com a hora do "meio dia", com a situação da hora e um quarto, com a situação da hora e
+meia e com a situação da hora e três quartos fizemos o seguinte: uma vez que estávamos a reutilizar transdutores, por
+exemplo nos digitos de 10 a 19, foi necessário retirar destes transdutores reutilizáveis, os casos respectivos Às 12
+horas, aos 15 minutos, aos 30 minutos e aos 45 minutos.
+Para cada um desses casos, optámos por ter um transdutor único que tem duas possíveis soluções, dependendo do caso. Por
+exemplo, no caso da horas 13:15, é possível que a nossa solução tenha como output "uma e quinze" ou "uma e um quarto",
+tal como pedido no enunciado.  
