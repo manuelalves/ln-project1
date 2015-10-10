@@ -60,6 +60,9 @@ fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt uma.fst | dot -Tpdf > u
 fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  duas.txt  > duas.fst
 fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt duas.fst | dot -Tpdf > duas.pdf
 
+fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  zerohoras.txt  > zerohoras.fst
+fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt zerohoras.fst | dot -Tpdf > zerohoras.pdf
+
 # Compila e gera a versão gráfica do transdutor dos minutos de 0 a 19
 fstconcat zero.fst digitos1a9.fst > 0a9.fst
 fstunion 0a9.fst digitos10a19.fst > minutos0a19.fst
@@ -90,6 +93,11 @@ fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt  horas1a9.fst | dot -Tpd
 fstconcat digitos10a19.fst horas.fst > horas10a19.fst
 fstunion horas1a9.fst horas10a19.fst > horas1a19.fst
 fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt  horas1a19.fst | dot -Tpdf > horas1a19.pdf
+
+# Compila e gera a versão gráfica do transdutor das horas 0 a 19
+fstconcat zerohoras.fst horas.fst > horas0.fst
+fstunion horas0.fst horas1a19.fst > horas0a19.fst
+fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt  horas0a19.fst | dot -Tpdf > horas0a19.pdf
 
 ################### Tradutores de tradução ################
 #
