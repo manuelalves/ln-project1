@@ -56,6 +56,18 @@ fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt vinteeum.fst | dot -Tpd
 fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  e.txt  > e.fst
 fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt e.fst | dot -Tpdf > e.pdf
 
+fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  doze.txt  > doze.fst
+fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt doze.fst | dot -Tpdf > doze.pdf
+
+fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  quinze.txt  > quinze.fst
+fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt quinze.fst | dot -Tpdf > quinze.pdf
+
+fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  um.txt  > um.fst
+fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt um.fst | dot -Tpdf > um.pdf
+
+fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  tresquartos.txt  > tresquartos.fst
+fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt tresquartos.fst | dot -Tpdf > tresquartos.pdf
+
 #################### Compila e gera a versão gráfica do transdutor das horas ####################
 
 ####### 1 #######
@@ -74,7 +86,10 @@ fstrmepsilon 0a9horas.fst 0a9horas.fst
 fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt 0a9horas.fst | dot -Tpdf > 0a9horas.pdf
 
 ####### 10 - 19 #######
-fstunion 0a9horas.fst digitos10a19.fst > hora0a19.fst
+fstunion  digitos10a19.fst meiodia.fst > digitos10a19w12.fst    # adiciona meio dia a lista 10 a 19
+fstunion  digitos10a19w12.fst quinze.fst > digitos10a19w15.fst  # adiciona quinze a lista anterior
+fstconcat um.fst digitos10a19w15.fst > digitos10a19w1.fst       # adiciona o primeiro digito 1_ a lista anterior
+fstunion 0a9horas.fst digitos10a19w1.fst > hora0a19.fst
 fstrmepsilon hora0a19.fst hora0a19.fst
 fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt hora0a19.fst | dot -Tpdf > hora0a19.pdf
 
@@ -89,18 +104,24 @@ fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt horas.fst | dot -Tpdf > 
 #################### Compila e gera a versão gráfica do transdutor dos minutos ####################
 
 ####### 0 - 9 #######
-fstunion zero.fst digitos1a9.fst  > minutos0a9aux.fst          # introduz o 0 para ser estado final no caso de 00
-fstconcat zero.fst minutos0a9aux.fst  > minutos0a9.fst         # zero no primeiro digito 0_
+fstunion zero.fst digitos1a9.fst  > minutos0a9aux.fst             # introduz o 0 para ser estado final no caso de 00
+fstconcat zero.fst minutos0a9aux.fst  > minutos0a9.fst            # zero no primeiro digito 0_
 
 ####### 20 - 59 #######
-fstunion zero.fst digitos1a9.fst > digitos1a9ou0.fst              # zero no segundo digito no caso de 20, 30, 40 e 50
+fstunion zero.fst digitos1a9.fst > digitos1a9ou0.fst              # zero no segundo digito no caso de 20 e 50
 fstconcat digitos20a50.fst digitos1a9ou0.fst > minutos20a50.fst   # os restantes 9 digitos do segundo digito para numeros de 20-59
+fstunion emeia.fst minutos20a50.fst > minutos20a50w30.fst
+fstunion tresquartos.fst minutos20a50w30.fst > minutos20a50w40.fst
+fstconcat e.fst minutos20a50w40.fst > minutos20a50we.fst
 
 ####### 0 - 59 #######
-fstconcat e.fst digitos10a19.fst > edigitos10a19.fst
-fstunion edigitos10a19.fst minutos20a50.fst > minutosaux.fst       # junta os numeros de 10-19 com os de 20-50
-fstunion minutosaux.fst minutos0a9.fst > minutos.fst    # Junta os valores de 0-9 aos restantes
-fstrmepsilon minutos.fst minutos.fst
+fstunion  digitos10a19.fst doze.fst > digitos10a19w12.fst         # adiciona doze a lista 10 a 19
+fstunion  digitos10a19w12.fst umquarto.fst > digitos10a19w15.fst  # adiciona um quarto a lista anterior
+fstconcat um.fst digitos10a19w15.fst > digitos10a19w1.fst         # adiciona o primeiro digito 1_ a lista anterior
+fstconcat e.fst digitos10a19w1.fst > edigitos10a19.fst            # adiciona a letra e antes da lista anterior
+fstunion edigitos10a19.fst minutos20a50we.fst > minutosaux.fst      # junta os numeros de 10-19 com os de 20-50
+fstunion minutosaux.fst minutos0a9.fst > minutos.fst              # Junta os valores de 0-9 aos restantes
+fstrmepsilon minutos.fst minutos.fst                              # limpa os eps desnecessarios
 fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt minutos.fst | dot -Tpdf > minutos.pdf
 
 #################### Compila e gera a versão gráfica do transdutor relogio ####################

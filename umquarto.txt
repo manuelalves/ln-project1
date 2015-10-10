@@ -1,6 +1,6 @@
-0 1 1 eps
-1 2 5 e
-2 3 eps um
-3 4 eps quarto
-2
+0 1 5 eps
+1 2 eps um
+2 3 eps quarto
+1 4 eps quinze
+3
 4

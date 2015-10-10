@@ -1,0 +1,29 @@
+0 1 4 eps
+1 2 0 quarenta
+1 3 5 eps
+3 4 eps tres
+4 5 eps quartos
+3 6 eps quarenta
+6 7 eps e
+7 8 eps cinco
+1 9 eps quarenta
+9 10 eps e
+10 11 1 um
+10 12 2 dois
+10 13 3 tres
+10 14 4 quatro
+10 15 6 seis
+10 16 7 sete
+10 17 8 oito
+10 18 9 nove
+2
+5
+8
+11
+12
+13
+14
+15
+16
+17
+18
