@@ -56,6 +56,9 @@ fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt vinteeum.fst | dot -Tpd
 fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  e.txt  > e.fst
 fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt e.fst | dot -Tpdf > e.pdf
 
+fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  teste1.txt  > teste1.fst
+fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt teste1.fst | dot -Tpdf > teste1.pdf
+
 #################### Compila e gera a versão gráfica do transdutor das horas ####################
 
 ####### 1 #######
@@ -109,3 +112,8 @@ fstconcat horas.fst doispontos.fst > horasdoispontos.fst
 fstconcat horasdoispontos.fst minutos.fst > relogio.fst
 fstrmepsilon relogio.fst relogio.fst
 fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt relogio.fst | dot -Tpdf > relogio.pdf
+
+#################### Testes aos Transfutores
+fstcompose teste1.fst relogio.fst > solteste1.fst
+fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt solteste1.fst | dot -Tpdf > solteste1.pdf
+
