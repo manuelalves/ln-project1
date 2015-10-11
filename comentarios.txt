@@ -9,3 +9,6 @@ utilizámos operações bastante simples. Em todos os testes que realizámos, ob
 
 Quer o primeiro, quer o segundo conversor foram testados e corrigidos à medida que encontrámos erros, pelo que
 acreditamos que ambos os conversores são correctos e viáveis.
+
+Consideramos também que fruto de utilizarmos operações bastante simples e muita reutilização, a solução que obtivemos
+parece-nos pouco complexa e bastante perceptível.
