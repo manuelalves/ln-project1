@@ -27,5 +27,4 @@ noite.
 No que diz respeito aos transdutores reutilizáveis, são na maior parte grupos de dígitos, como por exemplo do 10 ao 
 19, em que podemos utilizar o mesmo quer para o caso das horas, quer para o caso dos minutos.
 
-Para finalizar, referir também o caso da existência do transdutor para o número 1, que utilizamos por exemplo para
-fazer a ligação com os (explica aqui como utilizas)..
+Para finalizar, referir também o caso da existência do transdutor para o número 1, que utilizamos para concatenar com os numeros de 10 a 19, sendo este 1 o primeiro digito.
