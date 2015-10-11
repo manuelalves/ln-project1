@@ -7,18 +7,27 @@ Grupo 8
 (com a descrição das opções tomadas, não podendo exceder 1 página A4)
 
 Começando a relatar as opções tomadas, queremos desde logo referir que no princípio do desenvolvimento desta solução 
-tentámos incluir as palavras minutos e horas na mesma. No entanto, devido à dificuldade que encontrámos em conseguir que 
-cada número tivesse a palavra "hora" ou "minuto" caso fosse singular, e "horas" ou "minutos" caso fosse plural, decidimo 
-não implementar a solução desta maneira, até porque não contava para a avaliação.
+tentámos incluir as palavras minutos e horas na mesma. No entanto, devido à dificuldade que encontrámos em conseguir 
+que cada número tivesse a palavra "hora" ou "minuto" caso fosse singular, e "horas" ou "minutos" caso fosse plural, 
+decidimos não implementar a solução desta maneira, até porque não contava para a avaliação.
 
-No que toca à maneira como lidámos com a hora do "meio dia", com a situação da hora e um quarto, com a situação da hora e meia e com a situação da hora e três quartos fizemos o seguinte: uma vez que estávamos a reutilizar transdutores, por exemplo nos digitos de 10 a 19, retiramos os digitos 12 e 15, ficando um transdutor com os valores de 10 a 19 excepto o 12 e o 15. Criámos depois dois transdutores para cada caso para o 12 e para o 15, um só com o "doze" para ser usado nos minutos e outro com o "doze" ou o "meio dia" para as horas; no caso do 15 um só com "quinze" nas horas e com o "quinze" e "um quarto" para os minutos. Unimos os transdutores novos com aquele que já tinhamos dos digitos de 10 a 19 e ficámos com um completo e adaptado aos casos especiais pedidos. No caso dos 30 e dos 45 minutos fizemos da mesma forma. Com 13:15, é possível que a nossa solução tenha como output "uma e quinze" ou "uma e um quarto", tal como pedido no enunciado. 
+No que toca à maneira como lidámos com a hora do "meio dia", com a situação da hora e um quarto, com a situação da
+hora e meia e com a situação da hora e três quartos fizemos o seguinte: uma vez que estávamos a reutilizar 
+transdutores, por exemplo nos digitos de 10 a 19, retiramos os digitos 12 e 15, ficando um transdutor com os valores
+de 10 a 19 excepto o 12 e o 15. Criámos depois dois transdutores para cada caso, para o 12 e para o 15, um só com o
+"doze" para ser usado nos minutos e outro com o "doze" ou o "meio dia" para as horas; no caso do 15 um só com "quinze"
+nas horas e com o "quinze" e "um quarto" para os minutos. Unimos os transdutores novos com aquele que já tinhamos dos 
+digitos de 10 a 19 e ficámos com um completo e adaptado aos casos especiais pedidos. No caso dos 30 e dos 45 minutos 
+fizemos da mesma forma. Com 13:15, é possível que a nossa solução tenha como output "uma e quinze" ou "uma e um 
+quarto", tal como pedido no enunciado. 
 
-Assim como explicado acima, também nos casos necessários para apresentarmos as horas 0, 1 e 2 da manhã, optámos por ter
-um transdutor único para cada. Esta opção aconteceu pelo mesmo facto acima, ou seja, para podermos reutilizar 
+Assim como explicado acima, também nos casos necessários para apresentarmos as horas 0, 1 e 2 da manhã, optámos por 
+ter um transdutor único para cada. Esta opção aconteceu pelo mesmo facto acima, ou seja, para podermos reutilizar 
 transdutores quando fosse possível, sendo que este não era o caso. O mesmo sucedeu para as horas a partir das 20 da 
 noite.
 
-No que diz respeito aos transdutores reutilizáveis, são na maior parte grupos de dígitos, como por exemplo do 10 ao 19 em
-podemos utilizar o mesmo quer para o caso das horas, quer para o caso dos minutos.
+No que diz respeito aos transdutores reutilizáveis, são na maior parte grupos de dígitos, como por exemplo do 10 ao 
+19, em que podemos utilizar o mesmo quer para o caso das horas, quer para o caso dos minutos.
 
-Para finalizar, referir também o caso da existência do transdutor para o número 1, que utilizamos por exemplo para fazer a ligação com os (explica aqui como utilizas)..
+Para finalizar, referir também o caso da existência do transdutor para o número 1, que utilizamos por exemplo para
+fazer a ligação com os (explica aqui como utilizas)..
