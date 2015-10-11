@@ -36,9 +36,6 @@ fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt umquarto.fst | dot -Tpd
 fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  zero.txt  > zero.fst
 fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt zero.fst | dot -Tpdf > zero.pdf
 
-fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  digitos3a9.txt  > digitos3a9.fst
-fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt digitos3a9.fst | dot -Tpdf > digitos3a9.pdf
-
 fstcompile --isymbols=data.sym.txt --osymbols=data.sym.txt  digitos3a9horas.txt  > digitos3a9horas.fst
 fstdraw  --isymbols=data.sym.txt --osymbols=data.sym.txt digitos3a9horas.fst | dot -Tpdf > digitos3a9horas.pdf
 
