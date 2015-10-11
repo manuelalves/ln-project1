@@ -144,5 +144,6 @@ fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt solteste1.fst | dot -Tpd
 fstcompose teste2.fst relogio.fst > solteste2.fst
 fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt solteste2.fst | dot -Tpdf > solteste2.pdf
 
-fstcompose teste3.fst relogio.fst > solteste3.fst
+fstinvert relogio.fst > relogioinvert.fst
+fstcompose teste3.fst relogioinvert.fst > solteste3.fst
 fstdraw --isymbols=data.sym.txt --osymbols=data.sym.txt solteste3.fst | dot -Tpdf > solteste3.pdf
