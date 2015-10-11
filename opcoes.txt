@@ -4,8 +4,6 @@ Grupo 8
 70484 - Pedro Saraiva
 -------------------------------------------------------------------------------
 
-(com a descrição das opções tomadas, não podendo exceder 1 página A4)
-
 Começando a relatar as opções tomadas, queremos desde logo referir que no princípio do desenvolvimento desta solução 
 tentámos incluir as palavras minutos e horas na mesma. No entanto, devido à dificuldade que encontrámos em conseguir 
 que cada número tivesse a palavra "hora" ou "minuto" caso fosse singular, e "horas" ou "minutos" caso fosse plural, 
