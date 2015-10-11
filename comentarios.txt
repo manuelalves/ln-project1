@@ -4,4 +4,8 @@ Grupo 8
 70484 - Pedro Saraiva
 -------------------------------------------------------------------------------
 
-(com comentários (correção, viabilidade, ...) à solução desenvolvida, não podendo exceder 1/2 página A4)
+A solução que realizámos é capaz de lidar com os casos especiais de tradução de horas, sendo que para o conseguirmos
+utilizámos operações bastante simples. Em todos os testes que realizámos, obtemos testes correctos.
+
+Quer o primeiro, quer o segundo conversor foram testados e corrigidos à medida que encontrámos erros, pelo que
+acreditamos que ambos os conversores são correctos e viáveis.
