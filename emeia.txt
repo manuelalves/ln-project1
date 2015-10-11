@@ -5,22 +5,14 @@
 1 5 eps trinta
 5 6 eps e
 6 7 1 um
-6 8 2 dois
-6 9 3 tres
-6 10 4 quatro
-6 11 5 cinco
-6 12 6 seis
-6 13 7 sete
-6 14 8 oito
-6 15 9 nove
+6 7 2 dois
+6 7 3 tres
+6 7 4 quatro
+6 7 5 cinco
+6 7 6 seis
+6 7 7 sete
+6 7 8 oito
+6 7 9 nove
 3
 4
 7
-8
-9
-10
-11
-12
-13
-14
-15

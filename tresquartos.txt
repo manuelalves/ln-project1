@@ -9,21 +9,14 @@
 1 9 eps quarenta
 9 10 eps e
 10 11 1 um
-10 12 2 dois
-10 13 3 tres
-10 14 4 quatro
-10 15 6 seis
-10 16 7 sete
-10 17 8 oito
-10 18 9 nove
+10 11 2 dois
+10 11 3 tres
+10 11 4 quatro
+10 11 6 seis
+10 11 7 sete
+10 11 8 oito
+10 11 9 nove
 2
 5
 8
 11
-12
-13
-14
-15
-16
-17
-18
