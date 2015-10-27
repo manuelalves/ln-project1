@@ -20,9 +20,8 @@ Use transducers to implement the following converters:
   
     Examples:
 
-      14:25 --> catorze e vinte cinco;
-      
-      10:15 --> dez e quinze ou dez e um quarto;
+      - 14:25 --> catorze e vinte cinco;
+      - 10:15 --> dez e quinze ou dez e um quarto;
       
     The use of the word "fourth / quarto" and "half / meia" is taken into account in the assessment, the converter can generate one or more alternatives.
     
@@ -47,8 +46,8 @@ To test the proposed solution uses in Linux environment, the tools:
 Installation:
 -
 
-Install Graphviz and OpenFST
-Clone the repo: git clone https://github.com/manuelalves/ln-project1.git
-Enter the directory: cd ln-project1
-Run the script: ./run.sh
-To delete the generated files: ./remove.sh
+  1. Install Graphviz and OpenFST
+  2. Clone the repo: git clone https://github.com/manuelalves/ln-project1.git
+  3. Enter the directory: cd ln-project1
+  4. Run the script: ./run.sh
+  5. To delete the generated files: ./remove.sh
