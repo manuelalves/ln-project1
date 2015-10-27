@@ -45,7 +45,7 @@ Installation:
 -
 
   1. Install Graphviz and OpenFST
-  2. Clone the repo: git clone https://github.com/manuelalves/ln-project1.git
-  3. Enter the directory: cd ln-project1
-  4. Run the script: ./run.sh
-  5. To delete the generated files: ./remove.sh
+  2. Clone the repo: <code>git clone https://github.com/manuelalves/ln-project1.git</code>
+  3. Enter the directory: <code>cd ln-project1</code>
+  4. Run the script: <code>./run.sh</code>
+  5. To delete the generated files: <code>./remove.sh</code>
