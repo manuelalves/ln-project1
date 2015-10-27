@@ -23,9 +23,8 @@ Use transducers to implement the following converters:
       - 14:25 --> catorze e vinte cinco;
       - 10:15 --> dez e quinze ou dez e um quarto;
       
-    The use of the word "fourth / quarto" and "half / meia" is taken into account in the assessment, the converter can generate one or more alternatives.
-    
-    The use of the word "hours / horas" and "minutes / minutos" is optional and will not be taken into account in the evaluation.
+     The use of the word "fourth / quarto" and "half / meia" is taken into account in the assessment, the converter can generate one or more alternatives.
+     The use of the word "hours / horas" and "minutes / minutos" is optional and will not be taken into account in the evaluation.
     
     Assume that the hours to convert are always valid.
 
