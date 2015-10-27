@@ -29,6 +29,15 @@ Tenha em consideração que todos os ficheiros devem usar a codificação UTF-8.
 SOFTWARE
 -
 Para testar a solução proposta utilize, em ambiente Linux, as ferramentas: 
+
 "Graphviz" (http://www.graphviz.org/);
 "OpenFST" da Google (http://www.openfst.org/twiki/bin/view/FST/FstDownload)
 
+Installation:
+-
+
+Install Graphviz and OpenFST
+Clone the repo: git clone ###
+Enter the directory: cd ln-project1
+Run the script: ./run.sh
+To delete the generated files: ./remove.sh
