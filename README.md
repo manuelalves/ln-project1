@@ -33,6 +33,7 @@ Use transducers to implement the following converters:
   2. hours converter as used in the portuguese spoken language to the condensed form.
  
 The file data.sym (available from statement) includes the definition of all symbols that can be used by transducers to develop. This file can NOT be changed.
+
 Please note that all files should use UTF-8 encoding.
 
 SOFTWARE
@@ -40,6 +41,7 @@ SOFTWARE
 To test the proposed solution uses in Linux environment, the tools:
 
 "Graphviz" (http://www.graphviz.org/);
+
 "OpenFST" from Google (http://www.openfst.org/twiki/bin/view/FST/FstDownload)
 
 Installation:
