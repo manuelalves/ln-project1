@@ -12,7 +12,7 @@ OPERATIONAL GOALS
 -
 - Troubleshooting using transducers.
 
-GOAL
+GOALS
 -
 Use transducers to implement the following converters:
 
