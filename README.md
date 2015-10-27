@@ -38,7 +38,6 @@ SOFTWARE
 To test the proposed solution uses in Linux environment, the tools:
 
   - "Graphviz" (http://www.graphviz.org/);
-
   - "OpenFST" from Google (http://www.openfst.org/twiki/bin/view/FST/FstDownload)
 
 Installation:
